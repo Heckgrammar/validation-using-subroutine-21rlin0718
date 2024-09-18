@@ -123,9 +123,7 @@
             // age
             //e.g. Bob Smith aged 34 would have the username Both34
 
-            string first = Convert.ToString(firstName[0]) + Convert.ToString(firstName[1]);
-            string last = Convert.ToString(lastName[lastName.Length-2]) + Convert.ToString(lastName[lastName.Length-1]);
-            string userName = first + last + Convert.ToInt32(age);
+            string userName = firstName.Substring(0, 2) + lastName.Substring(lastName.Length - 2, lastName.Length - 1) + age;
             return userName;
 
         }
