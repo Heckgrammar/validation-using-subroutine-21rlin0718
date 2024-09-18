@@ -11,11 +11,21 @@
             // The username should only be output once
             Console.Write("Enter first name: ");
             firstName = Console.ReadLine();
+            while (!ValidName(firstName))
+            {
+                Console.Write("Enter first name: ");
+                firstName = Console.ReadLine();
+            }
             Console.Write("Enter last name: ");
             lastName = Console.ReadLine();
+            while (!ValidName(lastName))
+            {
+                Console.Write("Enter last name: ");
+                lastName = Console.ReadLine();
+            }
             Console.Write("Enter age: ");
             age = Convert.ToInt32(Console.ReadLine());
-            while (validAge(age) = false)
+            while (!validAge(age))
             {
                 Console.Write("Enter age: ");
                 age = Convert.ToInt32(Console.ReadLine());
@@ -36,6 +46,23 @@
         static bool ValidName(string name)
         {
             // name must be at least two characters and contain only letters
+            if (name.Length >= 2)
+            {
+                for (int i = 0; i < name.Length; i++)
+                {
+                    int ascii = Convert.ToInt32(name[i]);
+                    if (ascii > 122 || ascii < 65)
+                    {
+                        return false;
+                    }
+                    else if (ascii > 90 || ascii < 97)
+                    {
+                        return false;
+                    }
+                    return true;
+                }
+            }
+            return false;
         }
 
         static bool validAge(int age)
