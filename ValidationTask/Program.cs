@@ -50,17 +50,13 @@
             {
                 for (int i = 0; i < name.Length; i++)
                 {
-                    int ascii = Convert.ToInt32(name[i]);
-                    if (ascii > 122 || ascii < 65)
+                    int ascii = Convert.ToByte(name[i]);
+                    if (ascii > 122 || ascii < 65 || (ascii > 90 && ascii < 97))
                     {
-                        return false;
+                        return false;   
                     }
-                    else if (ascii > 90 || ascii < 97)
-                    {
-                        return false;
-                    }
-                    return true;
                 }
+                return true;
             }
             return false;
         }
@@ -75,7 +71,7 @@
             return false;
         }
 
-   
+
         static bool ValidPassword(string password)
         {
             // Check password is at least 8 characters in length
@@ -108,6 +104,8 @@
             // contains only one @ and any number of .
             // does not contain any other non letter or number characters
 
+
+
         }
         static string createUserName(string firstName, string lastName, int age)
         {
@@ -118,10 +116,9 @@
             //e.g. Bob Smith aged 34 would have the username Both34
 
             string first = Convert.ToString(firstName[0]) + Convert.ToString(firstName[1]);
-            string last = Convert.ToString(lastName[0]) + Convert.ToString(lastName[1]);
+            string last = Convert.ToString(lastName[lastName.Length-2]) + Convert.ToString(lastName[lastName.Length-1]);
             string userName = first + last + Convert.ToInt32(age);
             return userName;
-
 
         }
 
