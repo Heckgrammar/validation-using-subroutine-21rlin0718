@@ -15,6 +15,11 @@
             lastName = Console.ReadLine();
             Console.Write("Enter age: ");
             age = Convert.ToInt32(Console.ReadLine());
+            while (validAge(age) = false)
+            {
+                Console.Write("Enter age: ");
+                age = Convert.ToInt32(Console.ReadLine());
+            }
             Console.Write("Enter Password: ");
             password = Console.ReadLine();
             Console.Write("Enter email address: ");
