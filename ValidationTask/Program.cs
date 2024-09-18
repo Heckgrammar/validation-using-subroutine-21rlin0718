@@ -79,7 +79,10 @@
         static bool ValidPassword(string password)
         {
             // Check password is at least 8 characters in length
-
+            if (password.Length < 8)
+            {
+                return false;
+            }
 
             // Check password contains a mix of lower case, upper case and non letter characters
             // QWErty%^& = valid
@@ -114,6 +117,10 @@
             // age
             //e.g. Bob Smith aged 34 would have the username Both34
 
+            string first = Convert.ToString(firstName[0]) + Convert.ToString(firstName[1]);
+            string last = Convert.ToString(lastName[0]) + Convert.ToString(lastName[1]);
+            string userName = first + last + Convert.ToInt32(age);
+            return userName;
 
 
         }
