@@ -53,13 +53,14 @@
                     int ascii = Convert.ToByte(name[i]);
                     if (ascii > 122 || ascii < 65 || (ascii > 90 && ascii < 97))
                     {
-                        return false;   
+                        return false;
                     }
                 }
                 return true;
             }
             return false;
         }
+        
 
         static bool validAge(int age)
         {
@@ -104,7 +105,14 @@
             // contains only one @ and any number of .
             // does not contain any other non letter or number characters
 
-
+            if (email.IndexOf('@') < 2)
+            {
+                return false;
+            }
+            if (email.IndexOf('.') < 2)
+            {
+                return false;
+            }
 
         }
         static string createUserName(string firstName, string lastName, int age)
