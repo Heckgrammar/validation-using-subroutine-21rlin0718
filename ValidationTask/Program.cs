@@ -36,7 +36,11 @@
         static bool validAge(int age)
         {
             //age must be between 11 and 18 inclusive
-
+            if (age >= 11 || age <= 18)
+            {
+                return true;
+            }
+            return false;
         }
 
    
