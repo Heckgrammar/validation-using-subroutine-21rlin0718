@@ -73,46 +73,79 @@
         }
 
 
-        static bool ValidPassword(string password)
-        {
-            // Check password is at least 8 characters in length
-            if (password.Length < 8)
-            {
-                return false;
-            }
+        //static bool ValidPassword(string password)
+        //{
+        //    // Check password is at least 8 characters in length
+        //    if (password.Length < 8)
+        //    {
+        //        return false;
+        //    }
 
-            // Check password contains a mix of lower case, upper case and non letter characters
-            // QWErty%^& = valid
-            // QWERTYUi = not valid
-            // ab£$%^&* = not valid
-            // QWERTYu! = valid
-
-
-            // Check password contains no runs of more than 2 consecutive or repeating letters or numbers
-            // AAbbdd!2 = valid (only 2 consecutive letters A and B and only 2 repeating of each)
-            // abC461*+ = not valid (abC are 3 consecutive letters)
-            // 987poiq! = not valid (987 are consecutive)
+        //    // Check password contains a mix of lower case, upper case and non letter characters
+        //    // QWErty%^& = valid
+        //    // QWERTYUi = not valid
+        //    // ab£$%^&* = not valid
+        //    // QWERTYu! = valid
 
 
+        //    // Check password contains no runs of more than 2 consecutive or repeating letters or numbers
+        //    // AAbbdd!2 = valid (only 2 consecutive letters A and B and only 2 repeating of each)
+        //    // abC461*+ = not valid (abC are 3 consecutive letters)
+        //    // 987poiq! = not valid (987 are consecutive)
 
-        }
+
+
+        //}
         static bool validEmail(string email)
         {
             // a valid email address
             // has at least 2 characters followed by an @ symbol
-            // has at least 2 characters followed by a .
-            // has at least 2 characters after the .
-            // contains only one @ and any number of .
-            // does not contain any other non letter or number characters
-
             if (email.IndexOf('@') < 2)
             {
                 return false;
             }
+            // has at least 2 characters followed by a .
             if (email.IndexOf('.') < 2)
             {
                 return false;
             }
+            // has at least 2 characters after the .
+            int count = 0;
+            for (int i = email.IndexOf('.'); i <= email.Length; i++)
+            {
+                count++;
+            }
+            if (count < 2)
+            {
+                return false;
+            }
+            // contains only one @ and any number of .
+            count = 0;
+            for (int i = 0; i < email.Length; i++)
+            {
+                int ascii = Convert.ToByte(email[i]);
+                if (ascii == 64)  //64 is the ASCII code of '@'
+                {
+                    count++;
+                }
+                if (count > 1)
+                {
+                    return false;
+                }
+            }
+            // does not contain any other non letter or number characters
+            for (int i = 0; i < email.Length; i++)
+            {
+                int ascii = Convert.ToByte(email[i]);
+                if ((ascii >= 48 && ascii <= 57) || ascii > 122 || ascii < 65 || (ascii > 90 && ascii < 97))
+                {
+                    if (ascii != 64 || ascii != 46)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
 
         }
         static string createUserName(string firstName, string lastName, int age)
