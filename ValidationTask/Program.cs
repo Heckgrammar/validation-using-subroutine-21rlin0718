@@ -34,6 +34,11 @@
             password = Console.ReadLine();
             Console.Write("Enter email address: ");
             emailAddress = Console.ReadLine();
+            while (!validEmail(emailAddress))
+            {
+                Console.Write("Enter email address: ");
+                emailAddress = Console.ReadLine();
+            }
 
 
             username = createUserName(firstName,lastName,age);
@@ -73,34 +78,34 @@
         }
 
 
-        //static bool ValidPassword(string password)
-        //{
-        //    // Check password is at least 8 characters in length
-        //    if (password.Length < 8)
-        //    {
-        //        return false;
-        //    }
+        static bool ValidPassword(string password)
+        {
+            // Check password is at least 8 characters in length
+            if (password.Length < 8)
+            {
+                return false;
+            }
 
-        //    // Check password contains a mix of lower case, upper case and non letter characters
-        //    // QWErty%^& = valid
-        //    // QWERTYUi = not valid
-        //    // ab£$%^&* = not valid
-        //    // QWERTYu! = valid
-
-
-        //    // Check password contains no runs of more than 2 consecutive or repeating letters or numbers
-        //    // AAbbdd!2 = valid (only 2 consecutive letters A and B and only 2 repeating of each)
-        //    // abC461*+ = not valid (abC are 3 consecutive letters)
-        //    // 987poiq! = not valid (987 are consecutive)
+            // Check password contains a mix of lower case, upper case and non letter characters
+            // QWErty%^& = valid
+            // QWERTYUi = not valid
+            // ab£$%^&* = not valid
+            // QWERTYu! = valid
 
 
+            // Check password contains no runs of more than 2 consecutive or repeating letters or numbers
+            // AAbbdd!2 = valid (only 2 consecutive letters A and B and only 2 repeating of each)
+            // abC461*+ = not valid (abC are 3 consecutive letters)
+            // 987poiq! = not valid (987 are consecutive)
 
-        //}
+
+
+        }
         static bool validEmail(string email)
         {
             // a valid email address
             // has at least 2 characters followed by an @ symbol
-            if (email.IndexOf('@') < 2)
+            if (email.IndexOf('@') <= 1)
             {
                 return false;
             }
@@ -128,10 +133,10 @@
                 {
                     count++;
                 }
-                if (count > 1)
-                {
-                    return false;
-                }
+            }
+            if (count > 1)
+            {
+                return false;
             }
             // does not contain any other non letter or number characters
             for (int i = 0; i < email.Length; i++)
@@ -139,7 +144,7 @@
                 int ascii = Convert.ToByte(email[i]);
                 if ((ascii >= 48 && ascii <= 57) || ascii > 122 || ascii < 65 || (ascii > 90 && ascii < 97))
                 {
-                    if (ascii != 64 || ascii != 46)
+                    if (ascii != 64 && ascii != 46)
                     {
                         return false;
                     }
