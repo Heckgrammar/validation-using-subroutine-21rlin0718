@@ -32,6 +32,11 @@
             }
             Console.Write("Enter Password: ");
             password = Console.ReadLine();
+            while (!ValidPassword(password))
+            {
+                Console.Write("Enter Password: ");
+                password = Console.ReadLine();
+            }
             Console.Write("Enter email address: ");
             emailAddress = Console.ReadLine();
             while (!validEmail(emailAddress))
@@ -70,7 +75,7 @@
         static bool validAge(int age)
         {
             //age must be between 11 and 18 inclusive
-            if (age >= 11 || age <= 18)
+            if (age >= 11 && age <= 18)
             {
                 return true;
             }
@@ -91,7 +96,7 @@
             // QWERTYUi = not valid
             // ab£$%^&* = not valid
             // QWERTYu! = valid
-
+            
 
             // Check password contains no runs of more than 2 consecutive or repeating letters or numbers
             // AAbbdd!2 = valid (only 2 consecutive letters A and B and only 2 repeating of each)
