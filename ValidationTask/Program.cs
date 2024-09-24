@@ -156,7 +156,7 @@ namespace ValidationTask
             }
             // has at least 2 characters after the .
             int count = 0;
-            for (int i = email.IndexOf('.'); i <= email.Length; i++)
+            for (int i = email.IndexOf('.'); i <= email.Length-1; i++)
             {
                 count++;
             }
