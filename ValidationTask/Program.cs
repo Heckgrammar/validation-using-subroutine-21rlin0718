@@ -144,18 +144,23 @@ namespace ValidationTask
         static bool validEmail(string email)
         {
             // a valid email address
+            int count = 0;
             // has at least 2 characters followed by an @ symbol
             if (email.IndexOf('@') <= 1)
             {
                 return false;
             }
             // has at least 2 characters followed by a .
-            if (email.IndexOf('.') < 2)
+            for (int i = email.IndexOf('@') + 1; i <= email.IndexOf('.') -1; i++)
+            {
+                count++;
+            }
+            if (count < 2)
             {
                 return false;
             }
             // has at least 2 characters after the .
-            int count = 0;
+            count = 0;
             for (int i = email.IndexOf('.'); i <= email.Length - 1; i++)
             {
                 count++;
