@@ -11,7 +11,7 @@ Running with boundary+erroneus data for age:
 
 Running with erroneous data for password:
 ![image](https://github.com/user-attachments/assets/7cc990f2-4a7b-43b4-a434-8a5101018450)
-Description of password attemps:
+Description of password attempts:
 1. Less than 8 characters
 2. No uppercase letters
 3. No lowercase letters
