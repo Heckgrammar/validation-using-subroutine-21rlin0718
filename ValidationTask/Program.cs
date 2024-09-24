@@ -103,9 +103,6 @@ namespace ValidationTask
             int nonLetter = 0;
             for (int i = 0; i < password.Length; i++)
             {
-                upper = 0;
-                lower = 0;
-                nonLetter = 0;
                 int ascii = Convert.ToByte(password[i]);
                 if (ascii >= 65 && ascii <= 90)
                 {
