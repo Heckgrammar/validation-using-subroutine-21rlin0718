@@ -1,4 +1,6 @@
-﻿namespace ValidationTask
+﻿using System.Net.Http.Headers;
+
+namespace ValidationTask
 {
     internal class Program
     {
@@ -102,8 +104,18 @@
             // AAbbdd!2 = valid (only 2 consecutive letters A and B and only 2 repeating of each)
             // abC461*+ = not valid (abC are 3 consecutive letters)
             // 987poiq! = not valid (987 are consecutive)
-
-
+            for (int i = 0; i < password.Length-2; i++)
+            {
+                if (password[i] == password[i + 1] && password[i + 1] == password[i + 2])
+                {
+                    return false;
+                }
+                if (password[i] + 1 == password[i + 1] && password[i + 1] + 1 == password[i + 2])
+                {
+                    return false;
+                }
+            }
+            return true;
 
         }
         static bool validEmail(string email)
