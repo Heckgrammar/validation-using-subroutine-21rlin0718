@@ -98,7 +98,33 @@ namespace ValidationTask
             // QWERTYUi = not valid
             // ab£$%^&* = not valid
             // QWERTYu! = valid
-            
+            int upper = 0;
+            int lower = 0;
+            int nonLetter = 0;
+            for (int i = 0; i < password.Length; i++)
+            {
+                upper = 0;
+                lower = 0;
+                nonLetter = 0;
+                int ascii = Convert.ToByte(password[i]);
+                if (ascii >= 65 && ascii <= 90)
+                {
+                    upper++;
+                }
+                else if (ascii >= 97 && ascii <= 122)
+                {
+                    lower++;
+                }
+                else
+                {
+                    nonLetter++;
+                }
+
+            }
+            if (upper == 0 || lower == 0 || nonLetter == 0)
+            {
+                return false;
+            }
 
             // Check password contains no runs of more than 2 consecutive or repeating letters or numbers
             // AAbbdd!2 = valid (only 2 consecutive letters A and B and only 2 repeating of each)
